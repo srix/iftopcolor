@@ -1,0 +1,322 @@
+iftop (1.0~pre2-3) unstable; urgency=low
+
+  * Enable hardening buildflags in debian/rules (Closes: #675849)
+
+ -- Alexander Reichle-Schmehl <tolimar@debian.org>  Tue, 22 May 2012 16:35:48 +0200
+
+iftop (1.0~pre2-2) unstable; urgency=low
+
+  * Bump standards to 3.9.3 (no changes needed)
+  * Upload to unstable
+
+ -- Alexander Reichle-Schmehl <tolimar@debian.org>  Tue, 22 May 2012 14:37:21 +0200
+
+iftop (0.17-19) unstable; urgency=low
+
+  * Add debian/patches/12-allow-iface-with-emtpy-mac.patch which fixes a
+    segfault when called upon interfaces with emtpy MAC address
+    (Closes: #609540)
+
+ -- Alexander Reichle-Schmehl <tolimar@debian.org>  Tue, 13 Dec 2011 16:05:19 +0100
+
+iftop (1.0~pre2-1) experimental; urgency=low
+
+  * New Upstream release
+    * Drop patches/01-manpage.patch (applied upstream)
+    * Drop patches/02-armeb.patch (applied upstream)
+    * Drop patches/03-frozen-order.patch (applied upstream)
+    * Drop patches/04-arm.patch (applied upstream)
+    * Drop patches/05-bar-display.patch (applied upstream)
+    * Drop patches/06-bar-bytes.patch (applied upstream)
+    * Drop patches/07-spelling-and-usage-text.patch (applied upstream)
+    * Drop patches/08-segfault-duplicate-options.patch (applied upstream)
+    * Drop patches/09-incomplete-hash-func.patch (applied upstream)
+    * Drop patches/10-lladdr-inclusion-kfreebsd.patch (applied upstream)
+    * Drop patches/11-implement-ipv6-support.patch (applied upstream)
+    * Fix package synopsis in --help (Closes: #439356)
+  * Deactivate quilt in debian/rules as no patches are left
+  * Fix usage of newer /usr/share/misc/config.{guess,sub} in debian/rules
+    (Closes: #535735)
+
+ -- Alexander Reichle-Schmehl <tolimar@debian.org>  Mon, 17 Oct 2011 16:05:33 +0200
+
+iftop (0.17-18) unstable; urgency=low
+
+  * Sepperate the changes from the previous upload into sepperate patches
+    * debian/patches/07-spelling-and-usage-text.patch
+    * debian/patches/08-segfault-duplicate-options.patch
+    * debian/patches/09-incomplete-hash-func.patch
+    * debian/patches/10-lladdr-inclusion-kfreebsd.patch
+    * debian/patches/11-implement-ipv6-support.patch
+  * Thanks again to Mats Erik Andersson for the work!
+  * Deactivate the (unexpected) subshell feature by building with
+    -DNO_SYSTEM
+  * Fix Vcs-Svn header in debian/control
+  * Fix typo of "feauture" in debian/NEWS
+  * Bump standards (No changes needed)
+
+ -- Alexander Reichle-Schmehl <tolimar@debian.org>  Mon, 17 Oct 2011 12:59:13 +0200
+
+iftop (0.17-17) experimental; urgency=low
+
+  * Use versioned build depends on quilt to allow easy backporting
+  * Add IPv6 support (Closes: #427852)
+  * Fix segfault when using the same command line argument multiple time
+    (Closes: #425488)
+  * Fix typo in display (Closes: #477928)
+  * Use better hash Algorithm in address pairs (Closes: #595169)
+  * Fix link-level address detection on kfreebsd-* (Closes: #598367)
+  * Many thanks for Mats Erik Andersson for working on these issues!
+
+ -- Alexander Reichle-Schmehl <tolimar@debian.org>  Fri, 15 Oct 2010 11:30:59 +0200
+
+iftop (0.17-16) unstable; urgency=low
+
+  * Adopt package (Closes: #543874)
+  * Add README.source
+  * Bump build-depends on debhelper, since we use override targets
+  * Fix another typo in iftop.8
+
+ -- Alexander Reichle-Schmehl <tolimar@debian.org>  Mon, 18 Jan 2010 23:35:24 +0100
+
+iftop (0.17-15) unstable; urgency=low
+
+  * Updating package to standards version 3.8.3.
+  * Removing vcs fields.
+  * Orphaning package.
+
+ -- Daniel Baumann <daniel@debian.org>  Thu, 27 Aug 2009 09:47:18 +0200
+
+iftop (0.17-14) unstable; urgency=low
+
+  * Removing accidentally imported (useless) removal of po files in
+    clean.
+  * Avoid empty packages because dh tries to be extra clever wrt/
+    destdir.
+
+ -- Daniel Baumann <daniel@debian.org>  Wed, 29 Jul 2009 23:47:10 +0200
+
+iftop (0.17-13) unstable; urgency=low
+
+  * Minimizing rules file.
+  * Wrapping patch descriptions to 80 characters a line.
+
+ -- Daniel Baumann <daniel@debian.org>  Wed, 29 Jul 2009 23:19:11 +0200
+
+iftop (0.17-12) unstable; urgency=low
+
+  * Updating package to standards version 3.8.2.
+  * Updating manpage patch to also remove unknown sequences.
+  * Adding misc depends to the debug package.
+
+ -- Daniel Baumann <daniel@debian.org>  Mon, 27 Jul 2009 13:20:53 +0200
+
+iftop (0.17-11) unstable; urgency=low
+
+  * Updating rules to current state of the art.
+  * Upgrading package to standards 3.8.1.
+  * Updating section for debug packages.
+  * Using correct rfc-2822 date formats in changelog.
+
+ -- Daniel Baumann <daniel@debian.org>  Mon, 04 May 2009 11:42:02 +0200
+
+iftop (0.17-10) unstable; urgency=low
+
+  * Applying patch from Marcin Kryczek to make displaying of top bar and
+    screen consistent regarding bits and bytes mode (Closes: #513243).
+  * Adding note in manpage about always using bits when specifying max-
+    bandwith, regardless if the option to display in bytes was choosen,
+    thanks to Nathan Stratton Treadway <debbugs2008a@nathanst.com>.
+
+ -- Daniel Baumann <daniel@debian.org>  Tue, 27 Jan 2009 17:51:00 +0100
+
+iftop (0.17-9) unstable; urgency=low
+
+  * Reordering compiler flags in configure call.
+  * Correcting indenting in copyright file.
+  * Updatingto debhelper 7.
+  * Updating to standards 3.8.0.
+  * Updating vcs fields in control file.
+  * Using patch-stamp rather than patch in rules file.
+  * Replacing obsolete dh_clean -k with dh_prep.
+  * Prefixing debhelper files with package name.
+  * Using quilt rather than dpatch.
+  * Updating year in copyright file.
+  * Updating rules to current state of the art.
+  * Updating manpage patch in order to fix yet another typo in the manpage,
+    thanks to Serafeim Zanikolas <serzan@hellug.gr> (Closes: #512886).
+  * Sorting build-depends.
+
+ -- Daniel Baumann <daniel@debian.org>  Sun, 25 Jan 2009 00:05:00 +0100
+
+iftop (0.17-8) unstable; urgency=low
+
+  * Adding debug package.
+
+ -- Daniel Baumann <daniel@debian.org>  Wed, 16 Apr 2008 13:52:00 +0200
+
+iftop (0.17-7) unstable; urgency=low
+
+  * Reordering rules file.
+  * Removing config.guess and config.sub from debian branch.
+  * Removing watch file.
+  * Removing useless REAMDE from docs file.
+  * Rewriting copyright file in machine-interpretable format.
+  * Adding vcs fields in control file.
+  * Updating package to debhelper 6.
+  * Removing useless whitespaces in changelog file.
+
+ -- Daniel Baumann <daniel@debian.org>  Wed, 16 Apr 2008 13:39:00 +0200
+
+iftop (0.17-6) unstable; urgency=low
+
+  * Bumped policy version.
+  * Using new homepage field in control.
+  * Don't hide make errors in clean target of rules.
+
+ -- Daniel Baumann <daniel@debian.org>  Sun, 23 Dec 2007 15:55:00 +0100
+
+iftop (0.17-5) unstable; urgency=low
+
+  * Applied patch from Eric Cooper <ecc@cmu.edu> to fix -b option
+    (Closes: #445991).
+
+ -- Daniel Baumann <daniel@debian.org>  Tue, 09 Oct 2007 21:19:00 +0200
+
+iftop (0.17-4) unstable; urgency=low
+
+  * Minor cleanups.
+  * Bumped package to debhelper 5.
+
+ -- Daniel Baumann <daniel@debian.org>  Tue, 01 May 2007 13:45:00 +0200
+
+iftop (0.17-3) unstable; urgency=low
+
+  * Updated build-depends, moving libpcap-dev to libpcap0.8-dev
+    (Closes: #386904).
+
+ -- Daniel Baumann <daniel@debian.org>  Mon, 11 Sep 2006 09:09:00 +0200
+
+iftop (0.17-2) unstable; urgency=low
+
+  * New email address.
+  * Bumped policy version.
+
+ -- Daniel Baumann <daniel@debian.org>  Thu, 06 Jul 2006 08:48:00 +0200
+
+iftop (0.17-1) unstable; urgency=low
+
+  * New upstream release.
+  * Fixed manpage typos (Closes: #360205).
+
+ -- Daniel Baumann <daniel.baumann@panthera-systems.net>  Sat, 22 Apr 2006 17:04:00 +0100
+
+iftop (0.16-5) unstable; urgency=low
+
+  * Added patch to fix crash on arm (Closes: #351293).
+
+ -- Daniel Baumann <daniel.baumann@panthera-systems.net>  Sat, 04 Feb 2006 12:13:00 +0100
+
+iftop (0.16-4) unstable; urgency=low
+
+  * Added patch to fix drives line going crazy if order is frozen
+    (Closes: #315734).
+
+ -- Daniel Baumann <daniel.baumann@panthera-systems.net>  Mon, 05 Dec 2005 23:07:00 +0100
+
+iftop (0.16-3) unstable; urgency=low
+
+  * Added patch to fix armeb specific bug of structure size (Closes: #336212).
+
+ -- Daniel Baumann <daniel.baumann@panthera-systems.net>  Thu, 03 Nov 2005 22:45:00 +0200
+
+iftop (0.16-2) unstable; urgency=low
+
+  * New maintainer (Closes: #335917).
+  * Redone debian/ based on new debhelper templates:
+    - added watch file.
+    - bumped to new policy.
+    - config.{guess,sub} are now updated via diff.gz (Closes: #333825).
+    - added patch to fix manpage and usage string for -N and -F options
+      (Closes: #335203).
+
+ -- Daniel Baumann <daniel.baumann@panthera-systems.net>  Wed, 26 Oct 2005 23:08:00 +0200
+
+iftop (0.16-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- christophe barbe <christophe@debian.org>  Tue, 06 Apr 2004 20:37:45 -0400
+
+iftop (0.15-2) unstable; urgency=low
+
+  * Fix -N and -n options (Closes: #228643)
+    Thanks to Klaus Sperner <klaus@heaven.escape.de>.
+
+ -- christophe barbe <christophe@debian.org>  Mon, 19 Jan 2004 21:03:05 -0500
+
+iftop (0.15-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- christophe barbe <christophe@debian.org>  Sat, 15 Nov 2003 14:43:29 -0500
+
+iftop (0.13-1) unstable; urgency=low
+
+  * New upstream.
+  * iftop moved in /usr/sbin (Closes: #185285).
+
+ -- christophe barbe <christophe@debian.org>  Fri, 25 Jul 2003 17:32:38 -0400
+
+iftop (0.11-2) unstable; urgency=low
+
+  * Move DH_COMPAT in debian/compat.
+  * Bump Standards-Version up to 3.5.9.
+
+ -- christophe barbe <christophe@debian.org>  Thu, 03 Apr 2003 20:41:17 -0500
+
+iftop (0.11-1) unstable; urgency=low
+
+  * New upstream.
+  * Authors took into account some Flawfinder reports (Closes: #168542).
+
+ -- christophe barbe <christophe@debian.org>  Sun, 12 Jan 2003 18:31:04 -0500
+
+iftop (0.10-1) unstable; urgency=low
+
+  * New Upstream.
+
+ -- christophe barbe <christophe@debian.org>  Tue, 29 Oct 2002 18:35:13 -0500
+
+iftop (0.9-1) unstable; urgency=low
+
+  * New Upstream (closes: #166036).
+
+ -- christophe barbe <christophe@debian.org>  Wed, 23 Oct 2002 09:25:10 -0400
+
+iftop (0.7-1) unstable; urgency=low
+
+  * New buildable upstream release (unlike 0.6).
+
+ -- christophe barbe <christophe@debian.org>  Thu, 29 Aug 2002 13:35:15 -0400
+
+iftop (0.5-1) unstable; urgency=low
+
+  * New Upstream release.
+  * Exit nicely when running as non-root (Closes: #157168).
+  * Better interface selection (Closes: #157176).
+
+ -- christophe barbe <christophe@debian.org>  Mon, 26 Aug 2002 15:54:14 -0400
+
+iftop (0.4-2) unstable; urgency=low
+
+  * Rebuilt with new libpcap to remove dependency on libpcap0, which I
+    got removed from unstable by accident. (closes: #156217).
+
+ -- christophe barbe <christophe@debian.org>  Sun, 11 Aug 2002 16:27:00 -0400
+
+iftop (0.4-1) unstable; urgency=low
+
+  * Initial Release (closes: #151413).
+
+ -- christophe barbe <christophe@debian.org>  Sat, 29 Jun 2002 17:43:41 -0400
