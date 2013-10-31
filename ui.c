@@ -796,11 +796,10 @@ void ui_curses_init() {
     if( has_colors()==TRUE)
     {
         start_color();          /* Start color          */
-        short fg, bg;
-        pair_content(0, &fg, &bg); /* try to extract the terminal background color */
-        init_pair(COLOR_PAIR_RECV, COLOR_GREEN,  bg);  /* Download color */
-        init_pair(COLOR_PAIR_SENT, COLOR_BLUE,   bg);
-        init_pair(COLOR_PAIR_BOTH, COLOR_MAGENTA,bg);
+        use_default_colors();   /* retain terminal fg , bg colors */
+        init_pair(COLOR_PAIR_RECV, COLOR_GREEN,  -1);  /* Download color */
+        init_pair(COLOR_PAIR_SENT, COLOR_BLUE,   -1);
+        init_pair(COLOR_PAIR_BOTH, COLOR_MAGENTA,-1);
     }
     keypad(stdscr, TRUE);  /* enable keyboard mapping */
     (void) nonl();         /* tell curses not to do NL->CR/NL on output */
