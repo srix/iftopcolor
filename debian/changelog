@@ -1,3 +1,9 @@
+iftop (1.0~pre2-3ppa1) raring; urgency=low
+
+  * Added colorbar for sent, recvd and both bar graphs
+
+ -- srix <codeporukki@gmail.com> Thu, 31 Oct 2013 14:52:13 -0530 
+
 iftop (1.0~pre2-3) unstable; urgency=low
 
   * Enable hardening buildflags in debian/rules (Closes: #675849)
