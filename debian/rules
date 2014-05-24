@@ -1,20 +1,11 @@
 #!/usr/bin/make -f
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
-export DEB_CFLAGS_MAINT_APPEND  = -DNO_SYSTEM -Wall -DUSE_GETNAMEINFO=1 -DUSE_GETIFADDRS=1
+export DEB_CFLAGS_MAINT_APPEND = -DNO_SYSTEM -Wall -DUSE_GETNAMEINFO=1 -DUSE_GETIFADDRS=1
 export DEB_LDFLAGS_MAINT_APPEND = -Wl,-z,defs
 
 %:
-	dh ${@}
-
-override_dh_auto_clean:
-	dh_auto_clean config/config.guess config/config.sub
-
-
-override_dh_auto_configure:
-	[ -r /usr/share/misc/config.guess ] && cp -f /usr/share/misc/config.guess config/config.guess
-	[ -r /usr/share/misc/config.sub ] && cp -f /usr/share/misc/config.sub config/config.sub
-	dh_auto_configure
+	dh $@ --parallel --with autoreconf
 
 override_dh_auto_install:
 	dh_auto_install -- DESTDIR=$(CURDIR)/debian/iftop

@@ -1,0 +1,40 @@
+From: Olivier Allard-Jacquin <olivieraj@free.fr>
+Date: Fri, 18 Oct 2013 23:39:00 +0200
+Subject: memory leak
+
+Fix a memory leak in resolver.c. The struct addr_storage was allocated
+but never freed if dns resolution was turned off. Thanks to Olivier
+Allard-Jacquin for the report and patch.
+
+Bug: http://bugs.debian.org/677141
+---
+ resolver.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/resolver.c b/resolver.c
+index c09de9d..e3b965d 100644
+--- a/resolver.c
++++ b/resolver.c
+@@ -472,15 +472,15 @@ void resolve(int af, void* addr, char* result, int buflen) {
+     int added = 0;
+     struct addr_storage *raddr;
+ 
+-    raddr = malloc(sizeof *raddr);
+-    memset(raddr, 0, sizeof *raddr);
+-    raddr->af = af;
+-    raddr->len = (af == AF_INET ? sizeof(struct in_addr)
+-                  : sizeof(struct in6_addr));
+-    memcpy(&raddr->addr, addr, raddr->len);
+-
+     if(options.dnsresolution == 1) {
+ 
++        raddr = malloc(sizeof *raddr);
++        memset(raddr, 0, sizeof *raddr);
++        raddr->af = af;
++        raddr->len = (af == AF_INET ? sizeof(struct in_addr)
++                  : sizeof(struct in6_addr));
++        memcpy(&raddr->addr, addr, raddr->len);
++
+         pthread_mutex_lock(&resolver_queue_mutex);
+ 
+         if(hash_find(ns_hash, raddr, u_hostname.void_pp) == HASH_STATUS_OK) {

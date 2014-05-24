@@ -31,7 +31,7 @@ By default, \fBiftop\fP counts all IP packets that pass through the filter, and
 the direction of the packet is determined according to the direction the packet
 is moving across the interface.  Using the \fB-F\fP option it is possible to
 get \fBiftop\fP to show packets entering and leaving a given network.  For
-example, \fBiftop -F 10.0.0.0/255.0.0.0\fP will analyse packets flowing in and
+example, \fBiftop \-F 10.0.0.0/255.0.0.0\fP will analyse packets flowing in and
 out of the 10.* network.
 
 Some other filter ideas:
@@ -113,7 +113,6 @@ instance,
 foo.example.com  =>  bar.example.com      1Kb  500b   100b
                  <=                       2Mb    2Mb    2Mb
 
-.Sp
 .fi
 shows, on the first line, traffic from \fBfoo.example.com\fP to
 \fBbar.example.com\fP; in the preceding 2 seconds, this averaged 1Kbit/s,
@@ -196,7 +195,6 @@ directive is a name value pair, for example:
 
 interface: eth0
 
-.Sp
 .fi
 sets the network interface.  The following config directives are supported:
 

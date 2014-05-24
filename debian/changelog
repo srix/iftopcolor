@@ -1,8 +1,41 @@
-iftop (1.0~pre2-3ppa1) raring; urgency=low
+iftop (1.0~pre2-5ubuntu1) trusty; urgency=medium
 
-  * Added colorbar for sent, recvd and both bar graphs
+  *patched color output 
 
- -- srix <codeporukki@gmail.com> Thu, 31 Oct 2013 14:52:13 -0530 
+ -- srix <sriram@watchy.in>  Sat, 24 May 2014 15:32:44 +0530
+
+iftop (1.0~pre2-5) unstable; urgency=low
+
+  * [76d626d] Drop NEWS file. It is obsolete.
+  * [fdf86bf] Drop README.source.
+     - Source format 3.0 uses quilt by default.
+  * [e2651cf] Fix watch file and detect the latest upstream release.
+  * [2f7ea27] Build with --parallel and autoreconf instead of autotools-dev
+    to recreate the  whole build system at build time and to ensure that
+    iftop can be built twice in a row. Thanks to Graham Inggs for the report.
+    (Closes: #681560)
+  * [92cec5f] Update debian/copyright to copyright format 1.0.
+     - Add missing BSD licenses.
+  * [e8e73e0] Add man-page.patch.
+     - Fix errors in man page and lintian warning hyphen-used-as-minus-sign.
+  * Bump Standards-Version to 3.9.5, no changes.
+
+ -- Markus Koschany <apo@gambaru.de>  Thu, 31 Oct 2013 20:00:59 +0100
+
+iftop (1.0~pre2-4) unstable; urgency=low
+
+  * [488690e] New Maintainer. (Closes: #726549)
+  * [06096f6] Add memory-leak.patch.
+     - Fix a memory leak in resolver.c. The struct addr_storage was allocated
+       but never freed if dns resolution was turned off. Thanks to Olivier
+       Allard-Jacquin for the report and patch. (Closes: #677141)
+  * [ab3dd6a] Update VCS-fields.
+     - Move packaging to Git repository at collab-maint.
+  * [580ac7d] Require debhelper >= 9 for compat level 9. (Closes: #693754)
+  * [b881f79] Switch to source format 3.0 (quilt).
+  * [66bb584] Bump Standards-Version to 3.9.4, no changes.
+
+ -- Markus Koschany <apo@gambaru.de>  Sat, 19 Oct 2013 11:26:10 +0200
 
 iftop (1.0~pre2-3) unstable; urgency=low
 

@@ -472,14 +472,14 @@ void resolve(int af, void* addr, char* result, int buflen) {
     int added = 0;
     struct addr_storage *raddr;
 
-    raddr = malloc(sizeof *raddr);
-    memset(raddr, 0, sizeof *raddr);
-    raddr->af = af;
-    raddr->len = (af == AF_INET ? sizeof(struct in_addr)
-                  : sizeof(struct in6_addr));
-    memcpy(&raddr->addr, addr, raddr->len);
-
     if(options.dnsresolution == 1) {
+
+        raddr = malloc(sizeof *raddr);
+        memset(raddr, 0, sizeof *raddr);
+        raddr->af = af;
+        raddr->len = (af == AF_INET ? sizeof(struct in_addr)
+                  : sizeof(struct in6_addr));
+        memcpy(&raddr->addr, addr, raddr->len);
 
         pthread_mutex_lock(&resolver_queue_mutex);
 

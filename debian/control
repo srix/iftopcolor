@@ -1,16 +1,22 @@
 Source: iftop
 Section: net
 Priority: optional
-Maintainer: Alexander Reichle-Schmehl <tolimar@debian.org>
-Build-Depends: debhelper (>= 7.0.50~), autotools-dev, libncurses5-dev, libpcap0.8-dev
-Standards-Version: 3.9.3
+Maintainer: Markus Koschany <apo@gambaru.de>
+Build-Depends:
+ debhelper (>= 9),
+ dh-autoreconf,
+ libncurses5-dev,
+ libpcap0.8-dev
+Standards-Version: 3.9.5
 Homepage: http://www.ex-parrot.com/~pdw/iftop/
-Vcs-Svn: svn://svn.debian.org/svn/collab-maint/deb-maint/iftop/trunk/
-Vcs-Browser: http://svn.debian.org/viewsvn/collab-maint/deb-maint/iftop/
+Vcs-Git: git://anonscm.debian.org/collab-maint/iftop.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/iftop.git
 
 Package: iftop
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
 Description: displays bandwidth usage information on an network interface
  iftop does for network usage what top(1) does for CPU usage. It listens to
  network traffic on a named interface and displays a table of current bandwidth
@@ -21,7 +27,9 @@ Package: iftop-dbg
 Section: debug
 Priority: extra
 Architecture: any
-Depends: ${misc:Depends}, iftop (= ${binary:Version})
+Depends:
+ iftop (= ${binary:Version}),
+ ${misc:Depends}
 Description: displays bandwidth usage information on an network interface (debug)
  iftop does for network usage what top(1) does for CPU usage. It listens to
  network traffic on a named interface and displays a table of current bandwidth

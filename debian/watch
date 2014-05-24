@@ -1,4 +1,4 @@
 version=3
+opts=uversionmangle=s/(\d)[\.\-]?((rc|pre|dev|beta|alpha|b|a)\d*)$/$1~$2/,dversionmangle=s/\+(dfsg|debian|ds|repack|repacked)// \
 http://www.ex-parrot.com/~pdw/iftop/download/?M0D \
-         iftop-([\d\.]*).tar.gz
-
+ iftop-(\d.*)\.(?:tgz|tbz2|tar\.(?:gz|bz2|xz))
